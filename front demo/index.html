@@ -1,0 +1,96 @@
+<!DOCTYPE html> 
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="device-width,initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>riscv-ecosystem-tracking</title>
+        <script src="./lib/vue.min.js"></script>
+        <style>
+            [v-cloak]{
+                display: none;
+            }
+            .size40{
+                font-size:'40px';
+            }
+            .BgDBlue{
+                background-color:#0099FF;
+            }
+            .left{
+                float:left;
+            }
+            .both{
+                 clear:both;
+            }
+            .center{
+                text-align:center;
+            }
+            .size30{
+                font-size:'30px';
+            }
+            .BgBlue{
+                background-color:#00CCFF;
+            }
+            .texts{
+                height:200px;
+                width:400px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <p v-cloak>{{msg}}</p>
+            <input type="button" value="首页"  :title="detailLD">
+        </div> 
+        <div id="areas">
+            <a href="LinuxDesktop.html" ><img src="./pic/01.JPG" alt="LinuxDesktop" width="188" height="83" :title="detailLD"></a>
+            <a href="Server.html" ><img src="./pic/02.JPG" alt="Server" width="188" height="83" :title="detailSer"></a>
+            <a href="AOSP.html" ><img src="./pic/03.JPG" alt="AOSP" width="188" height="83" :title="detailAOSP"></a>
+            <a href="MCU.html" ><img src="./pic/04.JPG" alt="MCU" width="188" height="83" :title="detailMCU"></a>
+            <a href="HPC.html" ><img src="./pic/05.JPG" alt="HPC" width="188" height="83" :title="detailHPC"></a>
+            <a href="AI.html" ><img src="./pic/06.JPG" alt="AI" width="188" height="83" :title="detailAI"></a>
+            <a href="ALOT.html" ><img src="./pic/07.JPG" alt="ALOT" width="188" height="83" :title="detailAIoT"></a>
+            <a href="others.html" ><img src="./pic/08.JPG" alt="others" width="188" height="83" :title="detailLD"></a>
+        </div> 
+        <div id="container" style="width:1000px"></div>
+        <div id="none" style="height:400px;width:100px;float:left;"></div>
+        <div id="Wsr">
+            <h1 :class="['size40','left','texts']" style="background-color:#0099FF;">
+                什么是RISC-V
+            </h1>
+            <h1 :class="['size40','left','texts']" style="background-color:#00CCFF;">
+                RISC-V的应用领域
+            </h1>
+        </div>    
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data:{
+                    msg:'riscv-ecosystem-tracking',
+                    styleWsr:{'font-size':'40px'},
+                    styleWt:{'font-size':'30px'},
+                    detailLD:'让程序开发人员可以使用 RISC-V 平台进行日常的办公、开发工作',
+                }
+            })
+        </script>
+        <script>
+            var areas = new Division({
+                el: '#areas',
+                data:{
+                    msg:'riscv-ecosystem-tracking',
+                    styleWsr:{'font-size':'40px'},
+                    styleWt:{'font-size':'30px'},
+                    detailLD:'让程序开发人员可以使用 RISC-V 平台进行日常的办公、开发工作',
+                    detailSer:'关注目前主流的运行在 Linux/*BSD 上运行的服务器软件。包括 Apache、MySQL、Tomcat、Hadoop、Spark 等',
+                    detailHPC:'预期是全球 HPC TOP100 在2025年会出现 RISC-V 作为主控CPU的超算，进行大气模拟、石油开采、蛋白质分析等科学计算任务',
+                    detailAOSP:'智能移动端的事实标准。跟踪PLCT实验室在 AOSP 移植工作上的进展（这是目前唯一活跃的 AOSP 移植项目）',
+                    detailAIoT:'包括用于嵌入式的 JS引擎、WASM引擎等',
+                    detailAI:'RISC-V 在深度学习加速和人工智能计算上有着自己的优势。包括 Tensorflow、TVM 等',
+                    detailMCU:'是目前 RISC-V 应用最为成熟的领域',
+                }
+            })
+        </script>
+               
+        
+    </body>
+</html>
