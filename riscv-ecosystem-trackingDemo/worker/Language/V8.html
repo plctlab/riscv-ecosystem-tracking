@@ -1,349 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="device-width,initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="text/html;IE=edge,chrome=1">
-    <title>riscv-ecosystem-tracking</title>
-    <script src="./lib/vue.min.js"></script>
-    <style>
-        [v-cloak] {
-            display: none;
-        }
-
-        .size40 {
-            font-size: '40px';
-        }
-
-        .left {
-            float: left;
-        }
-
-        .both {
-            clear: both;
-        }
-
-        .center {
-            text-align: center;
-        }
-
-        .size30 {
-            font-size: '30px';
-        }
-
-        .texts {
-            height: 200px;
-            width: 400px;
-        }
-
-        .ia-fixed-sidebar,
-        .ia-splitter-left {
-            width: 285px;
-        }
-
-        .theme-default .ia-splitter #main {
-            margin-left: 285px;
-        }
-
-        .ia-fixed-sidebar {
-            visibility: hidden;
-        }
-
-        body {
-            background-color: #EEEEEE;
-            background-repeat: no-repeat;
-            background-size: cover;
-            -webkit-background-size: cover;
-            -o-background-size: cover;
-            background-position: center 0;
-        }
-    </style>
-</head>
-
-<body class="mceContentBody aui-theme-default wiki-content fullsize">
-    <hr>
-    <h1>
-        GHC
-    </h1>
-    <p>
-        格拉斯哥Haskell编译器（GHC）是针对Haskell编程语言的开源编译器。
-    </p>
-    <ul>
-        <li>
-            <p><a style="text-decoration: none;" rel="nofollow" href="https://www.haskell.org/ghc/">
-
-                    GHC主页
-                </a></p>
-        </li>
-    </ul>
-    <h2>
-        RISC-V状态
-    </h2>
-    <p>
-        GHC不支持RISC-V，但是有人对此进行了研究。在此跟踪移植尝试：
-    </p>
-    <ul>
-        <li>
-            <p><a style="text-decoration: none;" rel="nofollow"
-                    href="https://gitlab.haskell.org/ghc/ghc/-/issues/16783">
-                    https://gitlab.haskell.org/ghc/ghc/-/issues/16783
-                </a></p>
-        </li>
-    </ul>
-    <hr>
-    <p><br></p>
-    <h1>
-        去
-    </h1>
-    <p>
-        Go是一种为简单，可靠和高效而设计的编程语言。
-    </p>
-    <h2>
-        RISC-V状态
-    </h2>
-    <p>
-        RISC-V支持已成为Go 1.14的主线。
-    </p>
-    <hr>
-    <h1>
-        OpenJDK
-    </h1>
-    <p>
-        OpenJDK是Java平台（Java SE）的开源实现。
-    </p>
-    <ul>
-        <li>
-            <p><a rel="nofollow" style="text-decoration: none;" href="https://openjdk.java.net/projects/jdk/">
-                    OpenJDK主页
-                </a></p>
-        </li>
-        <li>
-            <p><a style="text-decoration: none;" href="https://github.com/openjdk/jdk">
-
-                    OpenJDK github存储库
-                </a></p>
-        </li>
-    </ul>
-    <h2>
-        RISC-V状态
-    </h2>
-    <p>
-        两个独立的团队开始在OpenJDK端口上工作。
-    </p>
-    <p>
-        BishengJDK团队由Wang Yadong领导。
-        他们已经发布了第一个用于RV64G的HotSpot JIT端口。
-    </p>
-    <p>
-        PLCT团队由石宁宁领导。
-    </p>
-    <p>
-        双方都在共同的<a href="https://github.com/openjdk-riscv/" style="text-decoration: none;">
-            RISC-V端口
-        </a>
-        上进行合作并开展工作。
-        <a href="https://github.com/openjdk-riscv/" style="text-decoration: none;">
-
-        </a>
-
-    </p>
-    <p>
-        可以在<a rel="nofollow" href="https://groups.google.com/a/groups.riscv.org/g/sw-dev/c/HziqjQ_2o2w"
-            style="text-decoration: none;">
-            此处
-        </a>
-        找到OpenJDK / HotSport RV64G JIT移植的状态
-
-        他们对实现其100倍加速<a style="text-decoration: none;"
-            href="https://groups.google.com/a/groups.riscv.org/g/sw-dev/c/fIYoDnpqww8" rel="nofollow">
-            目标
-        </a>
-        非常乐观
-    </p>
-    <hr>
-    <h1>
-        PHP
-    </h1>
-    <p>
-        PHP是一种针对Web开发的编程语言。
-    </p>
-    <ul>
-        <li>
-            <p><a rel="nofollow" href="https://www.php.net/" style="text-decoration: none;">
-                    PHP主页
-                </a></p>
-        </li>
-    </ul>
-    <h2>
-        RISC-V状态
-    </h2>
-    <p>
-        PHP解释器可在RISC-V上使用。
-        但是，某些功能（例如PCRE JIT）尚未移植，并且目前在代码库中没有特定于RISC-V的优化。
-        因此，目前无法实现最佳性能。
-
-    </p>
-    <hr>
-    <h1>
-        Rust
-    </h1>
-    <p>
-        Rust是一种为性能，可靠性和生产力而设计的编程语言。它依靠LLVM生成代码。
-    </p>
-    <ul>
-        <li>
-            <p><a href="https://www.rust-lang.org/" rel="nofollow" style="text-decoration: none;">
-                    Rust主页
-                </a></p>
-        </li>
-        <li>
-            <p><a href="https://doc.rust-lang.org/book/" style="text-decoration: none;" rel="nofollow">
-                    Rust手册
-                </a></p>
-        </li>
-    </ul>
-    <h2>
-        RISC-V状态
-    </h2>
-    <p>
-        自1.42.0（2020-03-12）起，Rust对RISC-V
-        RV64（riscv64gc-unknown-linux-gnu）提供了第2层支持。支持RV32，但是currenlty没有完整的标准库。
-    </p>
-    <ul>
-        <li>
-            <p><a style="text-decoration: none;" rel="nofollow"
-                    href="https://doc.rust-lang.org/nightly/rustc/platform-support.html">
-                    https://doc.rust-lang.org/nightly/rustc/platform-support.html
-                </a></p>
-        </li>
-    </ul>
-    <hr>
-    <h1>
-        嵌入式Rust
-    </h1>
-    <p>
-        Rust Embedded是一个用于在“裸机”嵌入式系统上启用Rust编程语言的项目。
-    </p>
-    <ul>
-        <li>
-            <p><a href="https://github.com/rust-embedded/wg" style="text-decoration: none;">
-                    Rust嵌入式工作组
-                </a></p>
-        </li>
-        <li>
-            <p><a rel="nofollow" style="text-decoration: none;" href="https://docs.rust-embedded.org/book/">
-                    嵌入式Rust Book
-                </a></p>
-        </li>
-    </ul>
-    <h2>
-        RISC-V状态
-    </h2>
-    <p>
-        由于Embedded Rust不需要Rust的标准库（no_std），因此与完整的Rust运行时相比，可用的RISC-V平台更多。
-
-    </p>
-    <p>
-        支持以下平台：
-    </p>
-    <ul>
-        <li>
-            <p>
-                裸机RISC-V RV32
-            </p>
-            <ul>
-                <li>
-                    <p>
-                        RV32I
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        RV32IMAC
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        RV32IMC
-                    </p>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <p>
-                裸RISC-V RV64
-            </p>
-            <ul>
-                <li>
-                    <p>
-                        RV64IMAFDC
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        RV64IMAC
-                    </p>
-                </li>
-            </ul>
-        </li>
-    </ul>
-    <p>
-        还有一个快速入门指南，可为HiFive1开发板构建Rust应用程序：
-    </p>
-    <ul>
-        <li>
-            <p><a style="text-decoration: none;" href="https://github.com/riscv-rust/riscv-rust-quickstart">
-                    https://github.com/riscv-rust/riscv-rust-quickstart
-                </a></p>
-        </li>
-    </ul>
-    <hr>
-    <h1>
-        V8
-    </h1>
-    <p>
-        V8是一个JavaScript和WebAssembly引擎，非常注重性能。
-    </p>
-    <p>
-        V8用于其他运行时/项目的JavaScript运行时，例如
-    </p>
-    <ul>
-        <li>
-            <p>
-                谷歌浏览器
-            </p>
-        </li>
-        <li>
-            <p>
-                Chromium浏览器
-            </p>
-        </li>
-        <li>
-            <p>
-                Node.js
-            </p>
-        </li>
-    </ul>
-    <h2>
-        RISC-V状态
-    </h2>
-    <p>
-        PLCT正在<a href="https://github.com/v8-riscv/v8/" style="text-decoration: none;">
-            RISC-V端口
-        </a>
-        上工作。
-        她和她的团队设法
-        href="https://bugs.chromium.org/p/v8/issues/detail?id=10991#c23" style="text-decoration: none;">
-        </a>
-        href="https://github.com/v8-riscv/v8/issues/366#issuecomment-756183363">
-        </a>
-        <a href="https://github.com/v8-riscv/v8/" style="text-decoration: none;">
-        </a>
-        href="https://bugs.chromium.org/p/v8/issues/detail?id=10991#c23" style="text-decoration: none;">
-        </a>
-        href="https://github.com/v8-riscv/v8/issues/366#issuecomment-756183363">
-        </a>
-    </p>
-    </div>
-</body>
+<h1 id="v8">V8</h1>
+<p>V8是Google的开源JavaScript引擎。</p>
+<p>V8实现了ECMA-262中指定的ECMAScript。</p>
+<p>V8是用C ++编写的，并用于Google Chrome（来自Google的开源浏览器）中。</p>
+<p>V8可以独立运行，也可以嵌入到任何C ++应用程序中。</p>
+<p>V8 JavaScript引擎 项目页面<a href="https://openjdk.java.net/projects/jdk/">https：//v8.dev/docs</a></p>
+<p>V8 JavaScript引擎 存储库 <a href="https://github.com/openjdk/jdk">https://github.com/riscv/v8</a></p>
+<h2 id="risc-v维护人员">RISC-V维护人员</h2>
+<ul>
+<li><p><a href="https://github.com/riscv/v8">PLCT实验室</a></p></li>
+</ul>
+<h2 id="发行版本">发行版本</h2>
+<p>V8 发布 v9.1 （2021 年 5 月 4 日）</p>
+<p>V8 发布 v9.0 （2021 年 3 月 17 日）</p>
+<p>V8 发布 v8.9 （2021 年 2 月 4 日）</p>
+<p>V8 发布 v8.7 （2020 年 10 月 23 日）</p>
+<p>V8 发布 v8.6 （2020 年 9 月 21 日）</p>
+<p>V8 发布 v8.5 （2020 年 7 月 21 日）</p>
+<p>V8 发布 v8.4 （2020 年 6 月 30 日）</p>
+<p>V8 发布 v8.3 （2020 年 5 月 4 日）</p>
+<p>V8 发布 v8.1 （2020 年 2 月 25 日）</p>
+<p>V8 发布 v8.0 （2019 年 12 月 18 日）</p>
+<p>V8 发布 v7.9 （2019 年 11 月 20 日）</p>
+<p>V8 发布 v7.8 （2019 年 9 月 27 日）</p>
+<p>V8 发布 v7.7 （2019 年 8 月 13 日）</p>
+<p>V8 发布 v7.6 （2019 年 6 月 19 日）</p>
+<p>V8 发布 v7.5 （2019 年 5 月 16 日）</p>
+<p>V8 发布 v7.4 （2019 年 3 月 22 日）</p>
+<p>V8 发布 v7.3 （2019 年 2 月 7 日）</p>
+<p>V8 发布 v7.2 （2018 年 12 月 18 日）</p>
+<p>V8 发布 v7.1 （2018 年 10 月 31 日）</p>
+<p>V8 发布 v7.0 （2018 年 10 月 15 日）</p>
+<p>V8 发布 v6.9 （2018 年 8 月 7 日）</p>
+<p>V8 发布 v6.8 （2018 年 6 月 21 日）</p>
+<p>V8 发布 v6.7 （2018 年 5 月 4 日）</p>
+<p>V8 发布 v6.6 （2018 年 3 月 27 日）</p>
+<p>V8 发布 v6.5 （2018 年 2 月 1 日）</p>
+<p>V8 发布 v6.4 （2017 年 12 月 19 日）</p>
+<p>V8 发布 v6.3 （2017 年 10 月 25 日）</p>
+<p>V8 发布 v6.2 （2017 年 9 月 11 日）</p>
+<p>V8 发布 v6.1 （2017 年 8 月 3 日）</p>
+<p>V8 发布 v6.0 （2017 年 6 月 9 日）</p>
+<p>V8 发布 v5.9 （2017 年 4 月 27 日）</p>
+<p>V8 发布 v5.8 （2017 年 3 月 20 日）</p>
+<p>V8 发布 v5.7 （2017 年 2 月 6 日）</p>
+<p>V8 发布 v5.6 （2016 年 12 月 2 日）</p>
+<p>V8 发布 v5.5 （2016 年 10 月 24 日）</p>
+<p>V8 发布 v5.4 （2016 年 9 月 9 日）</p>
+<p>V8 发布 v5.3 （2016 年 7 月 18 日）</p>
+<p>V8 发布 v5.2 （2016 年 6 月 4 日）</p>
+<p>V8 发布 v5.1 （2016 年 4 月 23 日）</p>
+<p>V8 发布 v5.0 （2016 年 3 月 15 日）</p>
+<p>V8 发布 v4.9 （2016 年 1 月 26 日）</p>
+<p>V8 发布 v4.8 （2015 年 11 月 25 日）</p>
+<p>V8 发布 v4.7 （2015 年 10 月 14 日）</p>
+<p>V8 发布 v4.6 （2015 年 8 月 28 日）</p>
+<p>V8 发布 v4.5 （2015 年 7 月 17 日）</p>
+<h2 id="risc-v状态">RISC-V状态</h2>
+<p>RISC-V版本的支持从2020年7月开始，此版本暂为独立分支，目前处于编码、测试、调试阶段逐步完成基本的 RISCV64 后端构建。</p>
