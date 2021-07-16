@@ -1,349 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="device-width,initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="text/html;IE=edge,chrome=1">
-    <title>riscv-ecosystem-tracking</title>
-    <script src="./lib/vue.min.js"></script>
-    <style>
-        [v-cloak] {
-            display: none;
-        }
-
-        .size40 {
-            font-size: '40px';
-        }
-
-        .left {
-            float: left;
-        }
-
-        .both {
-            clear: both;
-        }
-
-        .center {
-            text-align: center;
-        }
-
-        .size30 {
-            font-size: '30px';
-        }
-
-        .texts {
-            height: 200px;
-            width: 400px;
-        }
-
-        .ia-fixed-sidebar,
-        .ia-splitter-left {
-            width: 285px;
-        }
-
-        .theme-default .ia-splitter #main {
-            margin-left: 285px;
-        }
-
-        .ia-fixed-sidebar {
-            visibility: hidden;
-        }
-
-        body {
-            background-color: #EEEEEE;
-            background-repeat: no-repeat;
-            background-size: cover;
-            -webkit-background-size: cover;
-            -o-background-size: cover;
-            background-position: center 0;
-        }
-    </style>
-</head>
-
-<body class="mceContentBody aui-theme-default wiki-content fullsize">
-    <hr>
-    <h1>
-        GHC
-    </h1>
-    <p>
-        格拉斯哥Haskell编译器（GHC）是针对Haskell编程语言的开源编译器。
-    </p>
-    <ul>
-        <li>
-            <p><a style="text-decoration: none;" rel="nofollow" href="https://www.haskell.org/ghc/">
-
-                    GHC主页
-                </a></p>
-        </li>
-    </ul>
-    <h2>
-        RISC-V状态
-    </h2>
-    <p>
-        GHC不支持RISC-V，但是有人对此进行了研究。在此跟踪移植尝试：
-    </p>
-    <ul>
-        <li>
-            <p><a style="text-decoration: none;" rel="nofollow"
-                    href="https://gitlab.haskell.org/ghc/ghc/-/issues/16783">
-                    https://gitlab.haskell.org/ghc/ghc/-/issues/16783
-                </a></p>
-        </li>
-    </ul>
-    <hr>
-    <p><br></p>
-    <h1>
-        去
-    </h1>
-    <p>
-        Go是一种为简单，可靠和高效而设计的编程语言。
-    </p>
-    <h2>
-        RISC-V状态
-    </h2>
-    <p>
-        RISC-V支持已成为Go 1.14的主线。
-    </p>
-    <hr>
-    <h1>
-        OpenJDK
-    </h1>
-    <p>
-        OpenJDK是Java平台（Java SE）的开源实现。
-    </p>
-    <ul>
-        <li>
-            <p><a rel="nofollow" style="text-decoration: none;" href="https://openjdk.java.net/projects/jdk/">
-                    OpenJDK主页
-                </a></p>
-        </li>
-        <li>
-            <p><a style="text-decoration: none;" href="https://github.com/openjdk/jdk">
-
-                    OpenJDK github存储库
-                </a></p>
-        </li>
-    </ul>
-    <h2>
-        RISC-V状态
-    </h2>
-    <p>
-        两个独立的团队开始在OpenJDK端口上工作。
-    </p>
-    <p>
-        BishengJDK团队由Wang Yadong领导。
-        他们已经发布了第一个用于RV64G的HotSpot JIT端口。
-    </p>
-    <p>
-        PLCT团队由石宁宁领导。
-    </p>
-    <p>
-        双方都在共同的<a href="https://github.com/openjdk-riscv/" style="text-decoration: none;">
-            RISC-V端口
-        </a>
-        上进行合作并开展工作。
-        <a href="https://github.com/openjdk-riscv/" style="text-decoration: none;">
-
-        </a>
-
-    </p>
-    <p>
-        可以在<a rel="nofollow" href="https://groups.google.com/a/groups.riscv.org/g/sw-dev/c/HziqjQ_2o2w"
-            style="text-decoration: none;">
-            此处
-        </a>
-        找到OpenJDK / HotSport RV64G JIT移植的状态
-
-        他们对实现其100倍加速<a style="text-decoration: none;"
-            href="https://groups.google.com/a/groups.riscv.org/g/sw-dev/c/fIYoDnpqww8" rel="nofollow">
-            目标
-        </a>
-        非常乐观
-    </p>
-    <hr>
-    <h1>
-        PHP
-    </h1>
-    <p>
-        PHP是一种针对Web开发的编程语言。
-    </p>
-    <ul>
-        <li>
-            <p><a rel="nofollow" href="https://www.php.net/" style="text-decoration: none;">
-                    PHP主页
-                </a></p>
-        </li>
-    </ul>
-    <h2>
-        RISC-V状态
-    </h2>
-    <p>
-        PHP解释器可在RISC-V上使用。
-        但是，某些功能（例如PCRE JIT）尚未移植，并且目前在代码库中没有特定于RISC-V的优化。
-        因此，目前无法实现最佳性能。
-
-    </p>
-    <hr>
-    <h1>
-        Rust
-    </h1>
-    <p>
-        Rust是一种为性能，可靠性和生产力而设计的编程语言。它依靠LLVM生成代码。
-    </p>
-    <ul>
-        <li>
-            <p><a href="https://www.rust-lang.org/" rel="nofollow" style="text-decoration: none;">
-                    Rust主页
-                </a></p>
-        </li>
-        <li>
-            <p><a href="https://doc.rust-lang.org/book/" style="text-decoration: none;" rel="nofollow">
-                    Rust手册
-                </a></p>
-        </li>
-    </ul>
-    <h2>
-        RISC-V状态
-    </h2>
-    <p>
-        自1.42.0（2020-03-12）起，Rust对RISC-V
-        RV64（riscv64gc-unknown-linux-gnu）提供了第2层支持。支持RV32，但是currenlty没有完整的标准库。
-    </p>
-    <ul>
-        <li>
-            <p><a style="text-decoration: none;" rel="nofollow"
-                    href="https://doc.rust-lang.org/nightly/rustc/platform-support.html">
-                    https://doc.rust-lang.org/nightly/rustc/platform-support.html
-                </a></p>
-        </li>
-    </ul>
-    <hr>
-    <h1>
-        嵌入式Rust
-    </h1>
-    <p>
-        Rust Embedded是一个用于在“裸机”嵌入式系统上启用Rust编程语言的项目。
-    </p>
-    <ul>
-        <li>
-            <p><a href="https://github.com/rust-embedded/wg" style="text-decoration: none;">
-                    Rust嵌入式工作组
-                </a></p>
-        </li>
-        <li>
-            <p><a rel="nofollow" style="text-decoration: none;" href="https://docs.rust-embedded.org/book/">
-                    嵌入式Rust Book
-                </a></p>
-        </li>
-    </ul>
-    <h2>
-        RISC-V状态
-    </h2>
-    <p>
-        由于Embedded Rust不需要Rust的标准库（no_std），因此与完整的Rust运行时相比，可用的RISC-V平台更多。
-
-    </p>
-    <p>
-        支持以下平台：
-    </p>
-    <ul>
-        <li>
-            <p>
-                裸机RISC-V RV32
-            </p>
-            <ul>
-                <li>
-                    <p>
-                        RV32I
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        RV32IMAC
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        RV32IMC
-                    </p>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <p>
-                裸RISC-V RV64
-            </p>
-            <ul>
-                <li>
-                    <p>
-                        RV64IMAFDC
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        RV64IMAC
-                    </p>
-                </li>
-            </ul>
-        </li>
-    </ul>
-    <p>
-        还有一个快速入门指南，可为HiFive1开发板构建Rust应用程序：
-    </p>
-    <ul>
-        <li>
-            <p><a style="text-decoration: none;" href="https://github.com/riscv-rust/riscv-rust-quickstart">
-                    https://github.com/riscv-rust/riscv-rust-quickstart
-                </a></p>
-        </li>
-    </ul>
-    <hr>
-    <h1>
-        V8
-    </h1>
-    <p>
-        V8是一个JavaScript和WebAssembly引擎，非常注重性能。
-    </p>
-    <p>
-        V8用于其他运行时/项目的JavaScript运行时，例如
-    </p>
-    <ul>
-        <li>
-            <p>
-                谷歌浏览器
-            </p>
-        </li>
-        <li>
-            <p>
-                Chromium浏览器
-            </p>
-        </li>
-        <li>
-            <p>
-                Node.js
-            </p>
-        </li>
-    </ul>
-    <h2>
-        RISC-V状态
-    </h2>
-    <p>
-        PLCT正在<a href="https://github.com/v8-riscv/v8/" style="text-decoration: none;">
-            RISC-V端口
-        </a>
-        上工作。
-        她和她的团队设法
-        href="https://bugs.chromium.org/p/v8/issues/detail?id=10991#c23" style="text-decoration: none;">
-        </a>
-        href="https://github.com/v8-riscv/v8/issues/366#issuecomment-756183363">
-        </a>
-        <a href="https://github.com/v8-riscv/v8/" style="text-decoration: none;">
-        </a>
-        href="https://bugs.chromium.org/p/v8/issues/detail?id=10991#c23" style="text-decoration: none;">
-        </a>
-        href="https://github.com/v8-riscv/v8/issues/366#issuecomment-756183363">
-        </a>
-    </p>
-    </div>
-</body>
+<h1 id="micro-runtime">Micro-runtime</h1>
+<p>WebAssembly/wasm WebAssembly 或者 wasm 是一个可移植、体积小、加载快并且兼容 Web 的全新格式。Micro-runtime是wasm的运行环境。</p>
+<p>wasm主页<a href="https://openjdk.java.net/projects/jdk/"><span class="underline">http://webassembly.org.cn/ </span></a></p>
+<p>Micro-runtime存储库 <a href="https://github.com/golang/go"><span class="underline">https://github.com/bytecodealliance/wasm-micro-runtime</span></a></p>
+<h2 id="risc-v维护人员">RISC-V维护人员</h2>
+<ul>
+<li><p>待定</p></li>
+</ul>
+<h2 id="发行版本">发行版本</h2>
+<ul>
+<li><p><a href="https://github.com/bytecodealliance/wasm-micro-runtime/releases/tag/WAMR-04-15-2021"><span class="underline">WAMR-04-15-2021</span></a></p></li>
+<li><p><a href="https://github.com/bytecodealliance/wasm-micro-runtime/releases/tag/WAMR-03-25-2021"><span class="underline">WAMR-03-25-2021</span></a></p></li>
+<li><p><a href="https://github.com/bytecodealliance/wasm-micro-runtime/releases/tag/WAMR-01-29-2021"><span class="underline">WAMR-01-29-2021</span></a></p></li>
+<li><p><a href="https://github.com/bytecodealliance/wasm-micro-runtime/releases/tag/WAMR-09-29-2020"><span class="underline">WAMR-09-29-2020</span></a></p></li>
+<li><p><a href="https://github.com/bytecodealliance/wasm-micro-runtime/releases/tag/WAMR-09-08-2020"><span class="underline">WAMR-09-08-2020</span></a></p></li>
+<li><p><a href="https://github.com/bytecodealliance/wasm-micro-runtime/releases/tag/WAMR-07-10-2020"><span class="underline">WAMR-07-10-2020</span></a></p></li>
+<li><p><a href="https://github.com/bytecodealliance/wasm-micro-runtime/releases/tag/WAMR-06-15-2020"><span class="underline">WAMR-06-15-2020</span></a></p></li>
+<li><p><a href="https://github.com/bytecodealliance/wasm-micro-runtime/releases/tag/WAMR-04-15-2020"><span class="underline">WAMR-04-15-2020</span></a></p></li>
+<li><p><a href="https://github.com/bytecodealliance/wasm-micro-runtime/releases/tag/WAMR-03-30-2020"><span class="underline">WAMR-03-30-2020</span></a></p></li>
+<li><p><a href="https://github.com/bytecodealliance/wasm-micro-runtime/releases/tag/WAMR-03-19-2020"><span class="underline">WAMR-03-19-2020</span></a></p></li>
+<li><p><a href="https://github.com/bytecodealliance/wasm-micro-runtime/releases/tag/WAMR-03-05-2020"><span class="underline">WAMR-03-05-2020</span></a></p></li>
+<li><p><a href="https://github.com/bytecodealliance/wasm-micro-runtime/releases/tag/WAMR-02-27-2020"><span class="underline">WAMR-02-27-2020</span></a></p></li>
+<li><p><a href="https://github.com/bytecodealliance/wasm-micro-runtime/releases/tag/WAMR-02-18-2020"><span class="underline">WAMR-02-18-2020</span></a></p></li>
+<li><p><a href="https://github.com/bytecodealliance/wasm-micro-runtime/releases/tag/01-12-2020"><span class="underline">WAMR-01-12-2020</span></a></p></li>
+<li><p><a href="https://github.com/bytecodealliance/wasm-micro-runtime/releases/tag/tag-11-28-2019"><span class="underline">WAMR-11-28-2019</span></a></p></li>
+<li></li>
+</ul>
+<h2 id="risc-v状态">RISC-V状态</h2>
+<p>该项目的RISC-V支持尚未正式开展。</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Extension</strong></th>
+<th><strong>Status</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>B 扩展</td>
+<td>暂无</td>
+</tr>
+<tr class="even">
+<td>V 扩展</td>
+<td>暂无</td>
+</tr>
+<tr class="odd">
+<td>J 扩展</td>
+<td>暂无</td>
+</tr>
+<tr class="even">
+<td>P 扩展</td>
+<td>暂无</td>
+</tr>
+<tr class="odd">
+<td>Zefinx</td>
+<td>暂无</td>
+</tr>
+<tr class="even">
+<td>C 扩展</td>
+<td>暂无</td>
+</tr>
+</tbody>
+</table>
