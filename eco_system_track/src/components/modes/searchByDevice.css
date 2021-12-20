@@ -1,0 +1,33 @@
+.chip-type-select-radio .ant-radio-checked .ant-radio-inner{
+    border-color: red !important ;
+}
+
+.chip-type-select-radio .ant-radio-checked .ant-radio-inner:after{
+    background-color: red;
+}
+
+.chip-type-select-radio .ant-radio:hover .ant-radio-inner {
+    border-color: red ;
+}
+
+.chip-type-select-radio .ant-radio-checked .ant-radio-inner:focus{
+    border-color: red;
+}
+
+.ant-btn-primary.lookup_button{
+    background:#fcb326;
+    color:#ffffff;
+    border-color:#ffffff;
+    height: 150%;
+    border-radius:15px;
+    text-align:center;
+}
+
+.ant-btn-primary.lookup_button:hover {
+    background: #000;
+    color: #fcb326;
+    border-color: #ffffff;
+    height: 150%;
+    border-radius:15px;
+    text-align:center;
+}

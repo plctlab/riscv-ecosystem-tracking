@@ -1,0 +1,279 @@
+{
+  "device_search_mode":{
+    "hardware":{
+      "cores":{
+        "core1":{
+          "extension":{
+
+          },
+          "support_system":{
+            "system1":{
+              "support_softwares":{
+                "software1":{
+                  "support_features":{
+                    "feature1": {
+
+                    },
+                    "feature2": {
+
+                    }
+
+                  }
+                },
+                "software2":{
+                  "support_features":{
+                    "feature2": {
+
+                    },
+                    "feature3": {
+
+                    }
+                  }
+                }
+              }
+            },
+            "system2":{
+              "support_softwares":{
+                "software1":{
+                  "support_features":{
+                    "feature1": {
+
+                    },
+                    "feature2": {
+
+                    }
+                  }
+                },
+                "software3":{
+                  "support_features":{
+                    "feature2": {
+
+                    },
+                    "feature3": {
+
+                    }
+                  }
+                }
+              }
+            },
+            "system3":{
+              "support_softwares":{
+                "software2":{
+                  "support_features":{
+                    "feature1": {
+
+                    },
+                    "feature2": {
+
+                    }
+                  }
+                },
+                "software3":{
+                  "support_features":{
+                    "feature3": {
+
+                    },
+                    "feature4": {
+
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "core2":{
+          "extension":{
+
+          },
+          "support_system":{
+            "system1":{
+              "support_softwares":{
+                "software1":{
+                  "support_features":{
+                    "feature1": {
+
+                    },
+                    "feature2": {
+
+                    }
+                  }
+                },
+                "software2":{
+                  "support_features":{
+                    "feature2": {
+
+                    },
+                    "feature3": {
+
+                    }
+                  }
+                }
+              }
+            },
+            "system2":{
+              "support_softwares":{
+                "software1":{
+                  "support_features":{
+                    "feature1": {
+
+                    },
+                    "feature2": {
+
+                    }
+                  }
+                },
+                "software3":{
+                  "support_features":{
+                    "feature3": {
+
+                    },
+                    "feature4": {
+
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "socs":{
+        "soc1":{
+          "extension":{
+
+          },
+          "support_system":{
+            "system2":{
+              "support_softwares":{
+                "software1":{
+                  "support_features":{
+
+                  }
+                },
+                "software3":{
+                  "support_features":{
+
+                  }
+                }
+              }
+            },
+            "system3":{
+              "support_softwares":{
+                "software2":{
+                  "support_features":{
+
+                  }
+                },
+                "software3":{
+                  "support_features":{
+
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "platforms":{
+        "platform1":{
+          "extension":{
+
+          },
+          "support_system":{
+            "system2":{
+              "support_softwares":{
+                "software1":{
+                  "support_features":{
+
+                  }
+                }
+              }
+            },
+            "system4":{
+              "support_softwares":{
+                "software2":{
+                  "support_features":{
+
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "system":{
+      "system1": {},
+      "system2": {},
+      "system3": {},
+      "system4": {}
+    },
+    "software":{
+      "software1":{
+        "features":{
+          "feature1": {
+
+          },
+          "feature2": {
+
+          },
+          "feature3": {
+
+          },
+          "feature4": {
+
+          }
+        }
+      },
+      "software2":{
+        "features":{
+          "feature1": {
+
+          },
+          "feature2": {
+
+          },
+          "feature3": {
+
+          },
+          "feature4": {
+
+          }
+        }
+      },
+      "software3":{
+        "features":{
+          "feature1": {
+
+          },
+          "feature2": {
+
+          },
+          "feature3": {
+
+          },
+          "feature4": {
+
+          }
+        }
+      },
+      "software4":{
+        "features":{
+          "feature1": {
+
+          },
+          "feature2": {
+
+          },
+          "feature3": {
+
+          },
+          "feature4": {
+
+          }
+        }
+      }
+    }
+  }
+}

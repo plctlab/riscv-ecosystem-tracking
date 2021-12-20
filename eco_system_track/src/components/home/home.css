@@ -1,0 +1,24 @@
+.space-align-block {
+    flex: none;
+    margin: 8px 4px;
+    padding: 4px;
+}
+
+.ant-btn-primary.start_lookup_button{
+    background:#fcb326;
+    color:#ffffff;
+    border-color:#ffffff;
+    height: 150%;
+    border-radius:15px;
+    text-align:center;
+}
+
+.ant-btn-primary.start_lookup_button:hover {
+    background: #fff;
+    color: #fcb326;
+    border-color: #ffffff;
+    height: 150%;
+    border-radius:15px;
+    text-align:center;
+}
+
