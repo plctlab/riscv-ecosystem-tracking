@@ -314,7 +314,7 @@ const SearchByDevice = () => {
     }
 
     function renderAvailableFeature(props){
-        console.log(availableFeatures);
+        // console.log(availableFeatures);
         const { index, style } = props;
         return (
             <ListItem style={{...style, textAlign:`center`, borderBottom:'solid', borderBottomColor:'#c5c4c5',borderBottomWidth:'thin', color: availableFeatures.includes(props.data[index]) ? '#64e764':'#FF7F7F'}} key={index} component="div" disablePadding>
@@ -388,8 +388,8 @@ const SearchByDevice = () => {
 
 
     function checkResult(){
-        console.log(currentFeature);
-        console.log(availableFeatureList);
+        // console.log(currentFeature);
+        // console.log(availableFeatureList);
         if(availableFeatureList.includes(currentFeature)){
             setResult(
                 <div style={{ border:'solid', width:'100%',color:'#000', textAlign:'center', fontSize:'2.5em', display:'flex', justifyContent:'center', alignItems:'center'}}>
