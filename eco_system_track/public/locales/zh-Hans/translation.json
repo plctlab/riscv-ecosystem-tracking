@@ -1,0 +1,21 @@
+{
+  "language": "语言",
+  "welcome1": "欢迎来到 Risc-V 生态追踪系统",
+  "welcome2": "您可以在这里查询手中硬件的软件适配程度",
+  "project_name": "生态追踪系统",
+  "home": "主页",
+  "start_lookup": "开始查询",
+  "search_availability_by_device": "按设备搜索",
+  "searchByDevice": "按设备搜索",
+  "chipSelect": "选择硬件",
+  "systemSelect": "选择系统",
+  "softwareSelect": "选择软件",
+  "featureSelect": "选择特性",
+  "search_by_device_hint": "请按照顺序依次选择",
+  "look_up_table": "查询列表",
+  "look_up_table_end": "已到末尾",
+  "hardware": "硬件",
+  "system": "系统",
+  "software": "软件",
+  "feature": "特性"
+}
