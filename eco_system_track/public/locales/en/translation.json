@@ -1,0 +1,21 @@
+{
+  "language": "Language",
+  "welcome1": "Welcome to the Risc-V Eco Tracking System",
+  "welcome2": "You can check the software availability or features for your devices",
+  "project_name": "SoftWare Eco Track System",
+  "home": "Home",
+  "start_lookup": "Start LookUp",
+  "search_availability_by_device": "Search Availability By Device",
+  "searchByDevice": "Search By Device",
+  "chipSelect": "Hardware Select",
+  "systemSelect": "System Select",
+  "softwareSelect": "Software Select",
+  "featureSelect": "Feature Select",
+  "search_by_device_hint": "Please select follow the order",
+  "look_up_table": "Look Up Table",
+  "look_up_table_end": "Reach to the end",
+  "hardware": "Hardware",
+  "system": "System",
+  "software": "Software",
+  "feature": "Feature"
+}
