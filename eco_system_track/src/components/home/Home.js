@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import './home.css';
 import {RightOutlined} from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet'
 
 const { Content } = Layout;
 
@@ -14,6 +15,9 @@ const Home = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>ETS - Home</title>
+            </Helmet>
             <Content style={{ padding: '0 50px' }}>
                 <Breadcrumb style={{ margin: '16px 0' }}>
                     <Breadcrumb.Item href={'/'}>{t('project_name')}</Breadcrumb.Item>

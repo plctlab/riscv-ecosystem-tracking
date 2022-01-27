@@ -13,10 +13,11 @@ import ListItemText from '@mui/material/ListItemText';
 import { FixedSizeList } from 'react-window';
 import './searchByDevice.css';
 import {RightOutlined} from "@ant-design/icons";
+import { Helmet } from 'react-helmet'
 
 const { Content } = Layout;
 
-const allData = require('../../database/test_data.json');
+const allData = require('../../database/data.json');
 
 const SearchByDevice = () => {
     const { t } = useTranslation();
@@ -474,6 +475,9 @@ const SearchByDevice = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>ETS - Search By Device</title>
+            </Helmet>
             <Content name={'SearchByDeviceContainer'} style={{ padding: '0 50px' }}>
                 <PageHeader
                     className="searchByDeviceHeader"
