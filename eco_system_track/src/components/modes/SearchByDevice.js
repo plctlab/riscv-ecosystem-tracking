@@ -43,7 +43,7 @@ const SearchByDevice = () => {
     const [systemTable, setSystemTable] = useState(<div/>);
     const [softwareTable,setSoftwareTable] = useState(<div/>);
     const [featureTable, setFeatureTable] = useState(<div/>);
-    const [result,setResult] = useState(<div/>);
+    var look_up_hint = t('look_up_hint');
 
     const featureData = [
         'Please Select One Software to see features support',
@@ -167,7 +167,6 @@ const SearchByDevice = () => {
     function readSupportSystem(value){
         switch (currentChipType){
             case 1:
-                // console.log(Object.keys(allData.device_search_mode.hardware.cores[value].support_system));
                 var support_system = Object.keys(allData.device_search_mode.hardware.cores[value].support_system);
                 setSystemTable(
                     <FixedSizeList
@@ -184,7 +183,6 @@ const SearchByDevice = () => {
                 setSystemList(support_system);
                 break
             case 2:
-                // console.log(Object.keys(allData.device_search_mode.hardware.socs[value].support_system));
                 var support_system = Object.keys(allData.device_search_mode.hardware.socs[value].support_system)
                 setSystemTable(
                     <FixedSizeList
@@ -389,20 +387,10 @@ const SearchByDevice = () => {
 
 
     function checkResult(){
-        // console.log(currentFeature);
-        // console.log(availableFeatureList);
         if(availableFeatureList.includes(currentFeature)){
-            setResult(
-                <div style={{ border:'solid', width:'100%',color:'#000', textAlign:'center', fontSize:'2.5em', display:'flex', justifyContent:'center', alignItems:'center'}}>
-                    This feature Available On this setup.
-                </div>
-            )
+            look_up_hint = t('look_up_support');
         }else{
-            setResult(
-                <div style={{  border:'solid', width:'100%',color:'#000', textAlign:'center', fontSize:'2.5em', display:'flex', justifyContent:'center', alignItems:'center'}}>
-                    This feature Not available On this setup.
-                </div>
-            )
+            look_up_hint = t('look_up_not_support');
         }
     }
 
@@ -532,7 +520,8 @@ const SearchByDevice = () => {
                         <Box sx={{ minWidth: 120 }} style={{paddingTop:'10%'}}>
                             <FormControl id="system-select-fc" fullWidth>
                                 <InputLabel id="system-select-label">{t('systemSelect')}</InputLabel>
-                                <Select
+                                {currentChip === ''?  <Select
+                                    disabled
                                     id="system-select"
                                     value={currentSystem}
                                     label={t('systemSelect')}
@@ -545,7 +534,20 @@ const SearchByDevice = () => {
                                     {systemList.map((eachSystem) => (
                                         <MenuItem value={eachSystem}>{eachSystem}</MenuItem>
                                     ))}
-                                </Select>
+                                </Select> : <Select
+                                    id="system-select"
+                                    value={currentSystem}
+                                    label={t('systemSelect')}
+                                    onChange={(e)=>{
+                                        setCurrentSystem(e.target.value);
+                                        renderSystemSelected(e);
+                                        readSupportSoftware(e.target.value);
+                                    }}
+                                >
+                                    {systemList.map((eachSystem) => (
+                                        <MenuItem value={eachSystem}>{eachSystem}</MenuItem>
+                                    ))}
+                                </Select>}
                             </FormControl>
                         </Box>
                     </Col>
@@ -553,7 +555,8 @@ const SearchByDevice = () => {
                         <Box sx={{ minWidth: 120 }} style={{paddingTop:'10%'}}>
                             <FormControl fullWidth>
                                 <InputLabel id="software-select-label">{t('softwareSelect')}</InputLabel>
-                                <Select
+                                {currentSystem === ''? <Select
+                                    disabled
                                     id="software-select"
                                     value={currentSoftware}
                                     label={t('softwareSelect')}
@@ -565,7 +568,19 @@ const SearchByDevice = () => {
                                     {availableSoftwareList.map((eachSoftware) => (
                                         <MenuItem value={eachSoftware}>{eachSoftware}</MenuItem>
                                     ))}
-                                </Select>
+                                </Select> : <Select
+                                    id="software-select"
+                                    value={currentSoftware}
+                                    label={t('softwareSelect')}
+                                    onChange={(e)=>{
+                                        setCurrentSoftware(e.target.value);
+                                        readFeaturesOfOneSoftware(e.target.value);
+                                    }}
+                                >
+                                    {availableSoftwareList.map((eachSoftware) => (
+                                        <MenuItem value={eachSoftware}>{eachSoftware}</MenuItem>
+                                    ))}
+                                </Select>}
                             </FormControl>
                         </Box>
                     </Col>
@@ -573,7 +588,8 @@ const SearchByDevice = () => {
                         <Box sx={{ minWidth: 120 }} style={{paddingTop:'10%'}}>
                             <FormControl fullWidth>
                                 <InputLabel id="feature-select-label">{t('featureSelect')}</InputLabel>
-                                <Select
+                                {currentSoftware === '' ? <Select
+                                    disabled
                                     id="feature-select"
                                     value={currentFeature}
                                     label={t('featureSelect')}
@@ -584,17 +600,30 @@ const SearchByDevice = () => {
                                     {featureList.map((eachFeature) => (
                                         <MenuItem value={eachFeature}>{eachFeature}</MenuItem>
                                     ))}
-                                </Select>
+                                </Select> : <Select
+                                    id="feature-select"
+                                    value={currentFeature}
+                                    label={t('featureSelect')}
+                                    onChange={(e)=>{
+                                        setCurrentFeature(e.target.value);
+                                    }}
+                                >
+                                    {featureList.map((eachFeature) => (
+                                        <MenuItem value={eachFeature}>{eachFeature}</MenuItem>
+                                    ))}
+                                </Select>}
                             </FormControl>
                         </Box>
                     </Col>
                 </Row>
                 <Row style={{paddingTop:'3%'}}>
                     <Col span={14} offset={2}>
-                        {result}
+                        <div style={{ border:'solid', width:'100%',color:'#000', textAlign:'center', fontSize:'2.3em', display:'flex', justifyContent:'center', alignItems:'center', height:'inherit'}}>
+                            {look_up_hint}
+                        </div>
                     </Col>
                     <Col span={4} offset={1}>
-                        <Button className={'lookup_button'} type="primary" shape={'round'} size={'large'} block icon={<RightOutlined />} onClick={()=>{
+                        <Button style={{height:'100%'}} className={'lookup_button'} type="primary" shape={'round'} size={'large'} block icon={<RightOutlined />} onClick={()=>{
                             checkResult();
                         }}>{t('start_lookup')}</Button>
                     </Col>
