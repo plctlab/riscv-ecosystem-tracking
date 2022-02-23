@@ -55,7 +55,7 @@ const Banner = () => {
                             languages.map((language)=>{
                                 const lan = language.language;
                                 const code = language.code;
-                                return <Menu.Item key={code} onClick={()=>{i18next.changeLanguage(code)}}>{lan}</Menu.Item>
+                                return <Menu.Item key={code} onClick={()=>{i18next.changeLanguage(code).then(r => {console.log("Success Change Language.")})}}>{lan}</Menu.Item>
                             })
                         }
                     </SubMenu>

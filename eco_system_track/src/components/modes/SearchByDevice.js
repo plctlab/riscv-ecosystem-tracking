@@ -44,6 +44,7 @@ const SearchByDevice = () => {
     const [softwareTable,setSoftwareTable] = useState(<div/>);
     const [featureTable, setFeatureTable] = useState(<div/>);
     var look_up_hint = t('look_up_hint');
+    const [lookUpHint,setLookUpHint] = useState(look_up_hint);
 
     const featureData = [
         'Please Select One Software to see features support',
@@ -389,8 +390,10 @@ const SearchByDevice = () => {
     function checkResult(){
         if(availableFeatureList.includes(currentFeature)){
             look_up_hint = t('look_up_support');
+            setLookUpHint(look_up_hint);
         }else{
             look_up_hint = t('look_up_not_support');
+            setLookUpHint(look_up_hint);
         }
     }
 
@@ -619,7 +622,7 @@ const SearchByDevice = () => {
                 <Row style={{paddingTop:'3%'}}>
                     <Col span={14} offset={2}>
                         <div style={{ border:'solid', width:'100%',color:'#000', textAlign:'center', fontSize:'2.3em', display:'flex', justifyContent:'center', alignItems:'center', height:'inherit'}}>
-                            {look_up_hint}
+                            {lookUpHint}
                         </div>
                     </Col>
                     <Col span={4} offset={1}>
