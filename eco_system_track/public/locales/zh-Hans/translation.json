@@ -17,5 +17,8 @@
   "hardware": "硬件",
   "system": "系统",
   "software": "软件",
-  "feature": "特性"
+  "feature": "特性",
+  "look_up_hint": "点击右边开始查询",
+  "look_up_support": "支持该特性",
+  "look_up_not_support": "不支持该特性"
 }

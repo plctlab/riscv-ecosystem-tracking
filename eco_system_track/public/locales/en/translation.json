@@ -17,5 +17,8 @@
   "hardware": "Hardware",
   "system": "System",
   "software": "Software",
-  "feature": "Feature"
+  "feature": "Feature",
+  "look_up_hint": "Click Right Button To Look Up",
+  "look_up_support": "This feature Available On this setup",
+  "look_up_not_support": "This feature Not available On this setup"
 }
