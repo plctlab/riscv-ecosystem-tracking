@@ -11,19 +11,18 @@ import Select from '@mui/material/Select';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { FixedSizeList } from 'react-window';
-import './searchByDevice.css';
+import './SearchByDevice.css';
 import {RightOutlined} from "@ant-design/icons";
 import { Helmet } from 'react-helmet'
 
 const { Content } = Layout;
-
-const allData = require('../../database/data.json');
+const allData = require('../../../database/data.json');
 
 const SearchByDevice = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
     var currentSys = '';
-    var availableSoftwares = [];
+    var availableSoftware = [];
     var availableFeatures = [];
 
     const [chipsList, setChipsList] = useState([]);
@@ -46,10 +45,7 @@ const SearchByDevice = () => {
     var look_up_hint = t('look_up_hint');
     const [lookUpHint,setLookUpHint] = useState(look_up_hint);
 
-    const featureData = [
-        'Please Select One Software to see features support',
-    ];
-
+    //Render all data rows in each table
     function renderAllChipsRow(props) {
         const { index, style } = props;
         return (
@@ -58,7 +54,6 @@ const SearchByDevice = () => {
             </ListItem>
         );
     }
-
     function renderAllSystemsRow(props) {
         const { index, style } = props;
         return (
@@ -67,7 +62,6 @@ const SearchByDevice = () => {
             </ListItem>
         );
     }
-
     function renderAllSoftwareRow(props) {
         const { index, style } = props;
         return (
@@ -76,7 +70,6 @@ const SearchByDevice = () => {
             </ListItem>
         );
     }
-
     function renderAllFeatureRow(props) {
         const { index, style } = props;
         return (
@@ -86,6 +79,7 @@ const SearchByDevice = () => {
         );
     }
 
+    //Render current select chip type in radio group
     function renderChipSelected(e){
         setCurrentChip(e.target.value);
         setHardwareTable(<div>
@@ -95,6 +89,7 @@ const SearchByDevice = () => {
         </div>)
     }
 
+    //Read chips by radio group selection
     function readChipsByType(value){
         switch (value) {
             default:
@@ -115,7 +110,7 @@ const SearchByDevice = () => {
                 break
             case 1:
                 setChipsList(Object.keys(allData.device_search_mode.hardware.cores));
-                var cores = Object.keys(allData.device_search_mode.hardware.cores);
+                cores = Object.keys(allData.device_search_mode.hardware.cores);
                 setHardwareTable(
                     <FixedSizeList
                         height={400}
@@ -164,10 +159,86 @@ const SearchByDevice = () => {
         }
         setCurrentChip('');
     }
-    
+
+    //Read support software of selected chip/soc/platform
+    function readSupportSoftware(value){
+        switch (currentChipType){
+            default:
+                var support_software = Object.keys(allData.device_search_mode.hardware.cores[currentChip].support_system[value].support_softwares);
+                setSoftwareTable(
+                    <FixedSizeList
+                        height={400}
+                        itemSize={46}
+                        itemCount={softwareList.length}
+                        overscanCount={5}
+                        itemData={softwareList}
+                        style={{borderRadius:4, borderStyle:'solid', borderColor:'#c5c4c5',borderWidth:'thin'}}
+                    >
+                        {renderSelectSoftware}
+                    </FixedSizeList>
+                )
+                setAvailableSoftwareList(support_software);
+                availableSoftware = support_software;
+                break
+            case 1:
+                support_software = Object.keys(allData.device_search_mode.hardware.cores[currentChip].support_system[value].support_softwares);
+                setSoftwareTable(
+                    <FixedSizeList
+                        height={400}
+                        itemSize={46}
+                        itemCount={softwareList.length}
+                        overscanCount={5}
+                        itemData={softwareList}
+                        style={{borderRadius:4, borderStyle:'solid', borderColor:'#c5c4c5',borderWidth:'thin'}}
+                    >
+                        {renderSelectSoftware}
+                    </FixedSizeList>
+                )
+                setAvailableSoftwareList(support_software);
+                availableSoftware = support_software;
+                break
+            case 2:
+                // console.log(Object.keys(allData.device_search_mode.hardware.socs[value].support_system));
+                support_software = Object.keys(allData.device_search_mode.hardware.socs[currentChip].support_system[value].support_softwares);
+                setSoftwareTable(
+                    <FixedSizeList
+                        height={400}
+                        itemSize={46}
+                        itemCount={softwareList.length}
+                        overscanCount={5}
+                        itemData={softwareList}
+                        style={{borderRadius:4, borderStyle:'solid', borderColor:'#c5c4c5',borderWidth:'thin'}}
+                    >
+                        {renderSelectSoftware}
+                    </FixedSizeList>
+                )
+                setAvailableSoftwareList(support_software);
+                availableSoftware = support_software;
+                break
+            case 3:
+                // console.log(Object.keys(allData.device_search_mode.hardware.platforms[value].support_system));
+                support_software = Object.keys(allData.device_search_mode.hardware.platforms[currentChip].support_system[value].support_softwares);
+                setSoftwareTable(
+                    <FixedSizeList
+                        height={400}
+                        itemSize={46}
+                        itemCount={softwareList.length}
+                        overscanCount={5}
+                        itemData={softwareList}
+                        style={{borderRadius:4, borderStyle:'solid', borderColor:'#c5c4c5',borderWidth:'thin'}}
+                    >
+                        {renderSelectSoftware}
+                    </FixedSizeList>
+                )
+                setAvailableSoftwareList(support_software);
+                availableSoftware = support_software;
+                break
+        }
+    }
+    //Read support system of selected chip/soc/platform
     function readSupportSystem(value){
         switch (currentChipType){
-            case 1:
+            default:
                 var support_system = Object.keys(allData.device_search_mode.hardware.cores[value].support_system);
                 setSystemTable(
                     <FixedSizeList
@@ -183,151 +254,64 @@ const SearchByDevice = () => {
                 )
                 setSystemList(support_system);
                 break
-            case 2:
-                var support_system = Object.keys(allData.device_search_mode.hardware.socs[value].support_system)
-                setSystemTable(
-                    <FixedSizeList
-                        height={400}
-                        itemSize={46}
-                        itemCount={support_system.length}
-                        overscanCount={5}
-                        itemData={support_system}
-                        style={{borderRadius:4, borderStyle:'solid', borderColor:'#c5c4c5',borderWidth:'thin'}}
-                    >
-                        {renderAllChipsRow}
-                    </FixedSizeList>
-                )
-                setSystemList(support_system);
-                break
-            case 3:
-                // console.log(Object.keys(allData.device_search_mode.hardware.platforms[value].support_system));
-                var support_system = Object.keys(allData.device_search_mode.hardware.platforms[value].support_system)
-                setSystemTable(
-                    <FixedSizeList
-                        height={400}
-                        itemSize={46}
-                        itemCount={support_system.length}
-                        overscanCount={5}
-                        itemData={support_system}
-                        style={{borderRadius:4, borderStyle:'solid', borderColor:'#c5c4c5',borderWidth:'thin'}}
-                    >
-                        {renderAllChipsRow}
-                    </FixedSizeList>
-                )
-                setSystemList(support_system);
-                break
-        }
-    }
-
-    function renderSelectSystem(props){
-        const { index, style } = props;
-        return (
-            <ListItem style={{...style, textAlign:`center`, borderBottom:'solid', borderBottomColor:'#c5c4c5',borderBottomWidth:'thin', color: props.data[index] === currentSys?'#64e764':'#FF7F7F'}} key={index} component="div" disablePadding>
-                <ListItemText primary={props.data[index]} />
-            </ListItem>
-        );
-    }
-
-    function renderSystemSelected(e){
-        currentSys = e.target.value;
-        setCurrentSystem(currentSys);
-        setSystemTable(
-            <FixedSizeList
-                height={400}
-                itemSize={46}
-                itemCount={systemList.length}
-                overscanCount={5}
-                itemData={systemList}
-                style={{borderRadius:4, borderStyle:'solid', borderColor:'#c5c4c5',borderWidth:'thin'}}
-
-            >
-                {renderSelectSystem}
-            </FixedSizeList>
-        )
-    }
-
-    function renderSelectSoftware(props){
-        const { index, style } = props;
-        return (
-            <ListItem style={{...style, textAlign:`center`, borderBottom:'solid', borderBottomColor:'#c5c4c5',borderBottomWidth:'thin', color: availableSoftwares.includes(props.data[index]) ? '#64e764':'#FF7F7F'}} key={index} component="div" disablePadding>
-                <ListItemText primary={props.data[index]} />
-            </ListItem>
-        );
-    }
-
-    function readSupportSoftware(value){
-        switch (currentChipType){
             case 1:
-                var support_software = Object.keys(allData.device_search_mode.hardware.cores[currentChip].support_system[value].support_softwares);
-                setSoftwareTable(
+                support_system = Object.keys(allData.device_search_mode.hardware.cores[value].support_system);
+                setSystemTable(
                     <FixedSizeList
                         height={400}
                         itemSize={46}
-                        itemCount={softwareList.length}
+                        itemCount={support_system.length}
                         overscanCount={5}
-                        itemData={softwareList}
+                        itemData={support_system}
                         style={{borderRadius:4, borderStyle:'solid', borderColor:'#c5c4c5',borderWidth:'thin'}}
                     >
-                        {renderSelectSoftware}
+                        {renderAllChipsRow}
                     </FixedSizeList>
                 )
-                setAvailableSoftwareList(support_software);
-                availableSoftwares = support_software;
+                setSystemList(support_system);
                 break
             case 2:
-                // console.log(Object.keys(allData.device_search_mode.hardware.socs[value].support_system));
-                var support_software = Object.keys(allData.device_search_mode.hardware.socs[currentChip].support_system[value].support_softwares);
-                setSoftwareTable(
+                support_system = Object.keys(allData.device_search_mode.hardware.socs[value].support_system)
+                setSystemTable(
                     <FixedSizeList
                         height={400}
                         itemSize={46}
-                        itemCount={softwareList.length}
+                        itemCount={support_system.length}
                         overscanCount={5}
-                        itemData={softwareList}
+                        itemData={support_system}
                         style={{borderRadius:4, borderStyle:'solid', borderColor:'#c5c4c5',borderWidth:'thin'}}
                     >
-                        {renderSelectSoftware}
+                        {renderAllChipsRow}
                     </FixedSizeList>
                 )
-                setAvailableSoftwareList(support_software);
-                availableSoftwares = support_software;
+                setSystemList(support_system);
                 break
             case 3:
                 // console.log(Object.keys(allData.device_search_mode.hardware.platforms[value].support_system));
-                var support_software = Object.keys(allData.device_search_mode.hardware.platforms[currentChip].support_system[value].support_softwares);
-                setSoftwareTable(
+                support_system = Object.keys(allData.device_search_mode.hardware.platforms[value].support_system)
+                setSystemTable(
                     <FixedSizeList
                         height={400}
                         itemSize={46}
-                        itemCount={softwareList.length}
+                        itemCount={support_system.length}
                         overscanCount={5}
-                        itemData={softwareList}
+                        itemData={support_system}
                         style={{borderRadius:4, borderStyle:'solid', borderColor:'#c5c4c5',borderWidth:'thin'}}
                     >
-                        {renderSelectSoftware}
+                        {renderAllChipsRow}
                     </FixedSizeList>
                 )
-                setAvailableSoftwareList(support_software);
-                availableSoftwares = support_software;
+                setSystemList(support_system);
                 break
         }
     }
 
-    function renderAvailableFeature(props){
-        // console.log(availableFeatures);
-        const { index, style } = props;
-        return (
-            <ListItem style={{...style, textAlign:`center`, borderBottom:'solid', borderBottomColor:'#c5c4c5',borderBottomWidth:'thin', color: availableFeatures.includes(props.data[index]) ? '#64e764':'#FF7F7F'}} key={index} component="div" disablePadding>
-                <ListItemText primary={props.data[index]} />
-            </ListItem>
-        );
-    }
-
+    //Read features of selected software
     function readFeaturesOfOneSoftware(value){
         var software_features = Object.keys(allData.device_search_mode.software[value].features);
         setFeatureList(software_features);
         switch (currentChipType){
-            case 1:
+            default:
                 var support_feature = Object.keys(allData.device_search_mode.hardware.cores[currentChip].support_system[currentSystem].support_softwares[value].support_features);
                 // setFeatureList(support_feature);
                 setFeatureTable(
@@ -345,9 +329,27 @@ const SearchByDevice = () => {
                 availableFeatures = support_feature;
                 setAvailableFeatureList(support_feature);
                 break
+            case 1:
+                support_feature = Object.keys(allData.device_search_mode.hardware.cores[currentChip].support_system[currentSystem].support_softwares[value].support_features);
+                // setFeatureList(support_feature);
+                setFeatureTable(
+                    <FixedSizeList
+                        height={400}
+                        itemSize={46}
+                        itemCount={software_features.length}
+                        overscanCount={5}
+                        itemData={software_features}
+                        style={{borderRadius:4, borderStyle:'solid', borderColor:'#c5c4c5',borderWidth:'thin'}}
+                    >
+                        {renderAvailableFeature}
+                    </FixedSizeList>
+                )
+                availableFeatures = support_feature;
+                setAvailableFeatureList(support_feature);
+                break
             case 2:
                 // console.log(Object.keys(allData.device_search_mode.hardware.socs[value].support_system));
-                var support_feature = Object.keys(allData.device_search_mode.hardware.socs[currentChip].support_system[currentSystem].support_softwares[value].support_features);
+                support_feature = Object.keys(allData.device_search_mode.hardware.socs[currentChip].support_system[currentSystem].support_softwares[value].support_features);
                 // setFeatureList(support_feature);
                 setFeatureTable(
                     <FixedSizeList
@@ -365,9 +367,7 @@ const SearchByDevice = () => {
                 setAvailableFeatureList(support_feature);
                 break
             case 3:
-                // console.log(Object.keys(allData.device_search_mode.hardware.platforms[value].support_system));
-                var support_feature = Object.keys(allData.device_search_mode.hardware.platforms[currentChip].support_system[currentSystem].support_softwares[value].support_features);
-                // setFeatureList(support_feature);
+                support_feature = Object.keys(allData.device_search_mode.hardware.platforms[currentChip].support_system[currentSystem].support_softwares[value].support_features);
                 setFeatureTable(
                     <FixedSizeList
                         height={400}
@@ -386,7 +386,51 @@ const SearchByDevice = () => {
         }
     }
 
+    //Render selected data rows in each table
+    function renderSelectSystem(props){
+        const { index, style } = props;
+        return (
+            <ListItem style={{...style, textAlign:`center`, borderBottom:'solid', borderBottomColor:'#c5c4c5',borderBottomWidth:'thin', color: props.data[index] === currentSys?'#64e764':'#FF7F7F'}} key={index} component="div" disablePadding>
+                <ListItemText primary={props.data[index]} />
+            </ListItem>
+        );
+    }
+    function renderSystemSelected(e){
+        currentSys = e.target.value;
+        setCurrentSystem(currentSys);
+        setSystemTable(
+            <FixedSizeList
+                height={400}
+                itemSize={46}
+                itemCount={systemList.length}
+                overscanCount={5}
+                itemData={systemList}
+                style={{borderRadius:4, borderStyle:'solid', borderColor:'#c5c4c5',borderWidth:'thin'}}
 
+            >
+                {renderSelectSystem}
+            </FixedSizeList>
+        )
+    }
+    function renderSelectSoftware(props){
+        const { index, style } = props;
+        return (
+            <ListItem style={{...style, textAlign:`center`, borderBottom:'solid', borderBottomColor:'#c5c4c5',borderBottomWidth:'thin', color: availableSoftware.includes(props.data[index]) ? '#64e764':'#FF7F7F'}} key={index} component="div" disablePadding>
+                <ListItemText primary={props.data[index]} />
+            </ListItem>
+        );
+    }
+    function renderAvailableFeature(props){
+        // console.log(availableFeatures);
+        const { index, style } = props;
+        return (
+            <ListItem style={{...style, textAlign:`center`, borderBottom:'solid', borderBottomColor:'#c5c4c5',borderBottomWidth:'thin', color: availableFeatures.includes(props.data[index]) ? '#64e764':'#FF7F7F'}} key={index} component="div" disablePadding>
+                <ListItemText primary={props.data[index]} />
+            </ListItem>
+        );
+    }
+
+    //Check the combinations of selection to determine if available
     function checkResult(){
         if(availableFeatureList.includes(currentFeature)){
             look_up_hint = t('look_up_support');
@@ -397,7 +441,7 @@ const SearchByDevice = () => {
         }
     }
 
-
+    //Init tables with all data
     useEffect(()=>{
         setChipsList(Object.keys(allData.device_search_mode.hardware.cores));
         setSystemList(Object.keys(allData.device_search_mode.system));
@@ -439,6 +483,9 @@ const SearchByDevice = () => {
                 {renderAllSoftwareRow}
             </FixedSizeList>
         );
+        const featureData = [
+            'Please Select One Software to see features support',
+        ];
         setFeatureTable(
             <FixedSizeList
                 height={400}
@@ -453,6 +500,7 @@ const SearchByDevice = () => {
         );
     },[])
 
+    //Breadcrumb routes
     const routes = [
         {
             path: '/',
@@ -481,7 +529,6 @@ const SearchByDevice = () => {
                 <Row style={{paddingTop:'5%'}}>
                     <Col span={4} offset={2}>
                         <Radio.Group className={'chip-type-select-radio'} onChange={(e)=>{
-                            // console.log(e.target.value);
                             setCurrentChipType(e.target.value);
                             readChipsByType(e.target.value);
                         }} value={currentChipType} size={'large'} style={{fontSize:'250%'}}>

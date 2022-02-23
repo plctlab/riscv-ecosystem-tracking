@@ -7,7 +7,7 @@ import {
 import Home from "./components/home/Home";
 import Banner from "./components/banner/Banner";
 import React from "react";
-import SearchByDevice from "./components/modes/SearchByDevice";
+import SearchByDevice from "./components/modes/search-by-device/SearchByDevice";
 
 function App() {
   return (

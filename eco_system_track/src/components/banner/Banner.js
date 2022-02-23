@@ -34,6 +34,7 @@ const { SubMenu } = Menu;
 const Banner = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
+
     return(
         <div>
             <Header style={{background:'#fff'}}>

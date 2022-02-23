@@ -18,15 +18,15 @@ const Home = () => {
             <Helmet>
                 <title>ETS - Home</title>
             </Helmet>
-            <Content style={{ padding: '0 50px' }}>
-                <Breadcrumb style={{ margin: '16px 0' }}>
+            <Content className={'home-content'}>
+                <Breadcrumb className={'breadcrumb'}>
                     <Breadcrumb.Item href={'/'}>{t('project_name')}</Breadcrumb.Item>
                     <Breadcrumb.Item href={'/'}>{t('home')}</Breadcrumb.Item>
                 </Breadcrumb>
             </Content>
-            <div style={{paddingTop:'5%',paddingBottom:'5%', background:'linear-gradient(90deg,#0a6b7c 0%,#273272 100%)', opacity:'1'}}>
-                <h1 style={{color:'#fff', textAlign:'center', fontSize:'2.5em'}}>{t('welcome1')}</h1>
-                <h2 style={{color:'#fff', textAlign:'center',paddingTop:'2%'}}>{t('welcome2')}</h2>
+            <div className={'welcome-container'}>
+                <h1>{t('welcome1')}</h1>
+                <h2 >{t('welcome2')}</h2>
                 <Row style={{paddingTop:'2%'}}>
                     <Col span={4} offset={10}>
                         <Button className={'start_lookup_button'} type="primary" shape={'round'} size={'large'} block icon={<RightOutlined />} onClick={()=>{

@@ -22,3 +22,30 @@
     text-align:center;
 }
 
+.home-content{
+    padding: 0 50px;
+}
+
+.breadcrumb{
+    margin: 16px 0;
+}
+
+.welcome-container {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background: linear-gradient(90deg,#0a6b7c 0%,#273272 100%);
+    opacity: 1;
+}
+
+.welcome-container h1{
+    color: #fff;
+    text-align: center;
+    font-size: 2.5em;
+}
+
+.welcome-container h2{
+    color: #fff;
+    text-align: center;
+    padding-top: 2%;
+}
+
