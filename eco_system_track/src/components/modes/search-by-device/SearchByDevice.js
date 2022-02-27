@@ -91,10 +91,11 @@ const SearchByDevice = () => {
 
     //Read chips by radio group selection
     function readChipsByType(value){
+        var cores;
         switch (value) {
             default:
                 setChipsList(Object.keys(allData.device_search_mode.hardware.cores));
-                var cores = Object.keys(allData.device_search_mode.hardware.cores);
+                cores = Object.keys(allData.device_search_mode.hardware.cores);
                 setHardwareTable(
                     <FixedSizeList
                         height={400}
@@ -162,9 +163,10 @@ const SearchByDevice = () => {
 
     //Read support software of selected chip/soc/platform
     function readSupportSoftware(value){
+        var support_software;
         switch (currentChipType){
             default:
-                var support_software = Object.keys(allData.device_search_mode.hardware.cores[currentChip].support_system[value].support_softwares);
+                support_software = Object.keys(allData.device_search_mode.hardware.cores[currentChip].support_system[value].support_softwares);
                 setSoftwareTable(
                     <FixedSizeList
                         height={400}
@@ -237,9 +239,10 @@ const SearchByDevice = () => {
     }
     //Read support system of selected chip/soc/platform
     function readSupportSystem(value){
+        var support_system;
         switch (currentChipType){
             default:
-                var support_system = Object.keys(allData.device_search_mode.hardware.cores[value].support_system);
+                support_system = Object.keys(allData.device_search_mode.hardware.cores[value].support_system);
                 setSystemTable(
                     <FixedSizeList
                         height={400}
@@ -287,7 +290,6 @@ const SearchByDevice = () => {
                 setSystemList(support_system);
                 break
             case 3:
-                // console.log(Object.keys(allData.device_search_mode.hardware.platforms[value].support_system));
                 support_system = Object.keys(allData.device_search_mode.hardware.platforms[value].support_system)
                 setSystemTable(
                     <FixedSizeList
@@ -308,11 +310,12 @@ const SearchByDevice = () => {
 
     //Read features of selected software
     function readFeaturesOfOneSoftware(value){
-        var software_features = Object.keys(allData.device_search_mode.software[value].features);
+        const software_features = Object.keys(allData.device_search_mode.software[value].features);
         setFeatureList(software_features);
+        let support_feature;
         switch (currentChipType){
             default:
-                var support_feature = Object.keys(allData.device_search_mode.hardware.cores[currentChip].support_system[currentSystem].support_softwares[value].support_features);
+                support_feature = Object.keys(allData.device_search_mode.hardware.cores[currentChip].support_system[currentSystem].support_softwares[value].support_features);
                 // setFeatureList(support_feature);
                 setFeatureTable(
                     <FixedSizeList
@@ -673,9 +676,11 @@ const SearchByDevice = () => {
                         </div>
                     </Col>
                     <Col span={4} offset={1}>
-                        <Button style={{height:'100%'}} className={'lookup_button'} type="primary" shape={'round'} size={'large'} block icon={<RightOutlined />} onClick={()=>{
+                        {currentFeature === '' ? <Button disabled style={{height:'100%'}} className={'lookup_button'} type="primary" shape={'round'} size={'large'} block icon={<RightOutlined />} onClick={()=>{
                             checkResult();
-                        }}>{t('start_lookup')}</Button>
+                        }}>{t('start_lookup')}</Button> : <Button style={{height:'100%'}} className={'lookup_button'} type="primary" shape={'round'} size={'large'} block icon={<RightOutlined />} onClick={()=>{
+                            checkResult();
+                        }}>{t('start_lookup')}</Button>}
                     </Col>
                 </Row>
 
